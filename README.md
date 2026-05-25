@@ -20,6 +20,11 @@ Core spatial operations applied to Australian cities and regions:
 - 500km buffer analysis around major Australian cities
 - Population dissolve analysis by Australian state
 
+### Week 2 — Interactive Web Mapping
+- Built interactive folium map of Australian cities with population data
+- Color coded markers by population size with custom legend
+- Live Map: https://joseph-pradil.github.io/gis-portfolio/australia_map.html
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com
