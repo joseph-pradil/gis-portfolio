@@ -25,6 +25,13 @@ Core spatial operations applied to Australian cities and regions:
 - Color coded markers by population size with custom legend
 - Live Map: https://joseph-pradil.github.io/gis-portfolio/australia_map.html
 
+### Project 1 — NSW Bushfire Risk Model
+- Analysed 17,630 NSW fire incidents from 1970 to present using real government data
+- Identified major fire zones across NSW using spatial analysis
+- Total area burned: 34,446,191 hectares
+- [🔥 Live Interactive Map](https://transcendent-sable-e6a8a6.netlify.app/nsw_fire_history.html)
+- [📓 View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/project1_nsw_bushfire_risk.ipynb)
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com
