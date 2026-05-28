@@ -26,7 +26,6 @@ Core spatial operations applied to Australian cities and regions:
 - Live Map: https://joseph-pradil.github.io/gis-portfolio/australia_map.html
 
 ### Project 1 — NSW Bushfire Risk Model
-### Project 1 — NSW Bushfire Risk Model
 A frequency-based bushfire risk model for New South Wales using 126 years of government fire history data.
 
 **Method:** Overlaid a 10km grid across NSW, counted historical fire occurrences per cell using a spatial join, and classified each zone into Low/Medium/High/Extreme risk based on fire frequency.
