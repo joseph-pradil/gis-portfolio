@@ -1,0 +1,11 @@
+# Raw satellite data — far too large for GitHub (~940MB+)
+data/raw/
+
+# Processed intermediates (regenerable from the notebook)
+data/processed/
+
+# Jupyter checkpoint clutter
+.ipynb_checkpoints/
+
+# macOS noise
+.DS_Store
