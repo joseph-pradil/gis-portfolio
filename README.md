@@ -49,6 +49,31 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 
 **Limitations / next steps:** The frequency component is backward-looking. A production model would add vegetation/fuel type, slope, fire weather, and proximity-to-asset data. Population is residential only — it doesn't capture critical infrastructure or daytime/transient populations.
 
+### Project 2 — Melbourne Urban Heat Island Analysis
+
+A satellite-based heat map of inner Melbourne that asks not just **where is it hottest**, but **why** — by testing how surface temperature tracks vegetation cover, council by council.
+
+**Why I built this:** Coming from utility infrastructure in heat- and fire-prone California, I'm interested in how cities manage extreme heat — a growing issue for Australian urban planning. Surface temperature from satellite imagery is a direct, repeatable way to find a city's heat-vulnerable areas and make the case for where cooling investment (tree canopy, reflective surfaces) should go.
+
+**Method:**
+1. Pulled a clear summer Landsat 9 scene over Melbourne (3 Feb 2024) from USGS EarthExplorer
+2. Converted the thermal band to land surface temperature in °C and clipped it to the 13 inner/middle-Melbourne councils
+3. Calculated NDVI (vegetation index) from the red and near-infrared bands
+4. Measured the correlation between vegetation and temperature across land surfaces (water masked out)
+5. Computed mean surface temperature per council and ranked them — zonal statistics implemented directly from the raster
+
+**Key findings:**
+- Inner Melbourne's councils differ by ~3.5 °C in mean surface temperature on a single summer afternoon (34.1 °C to 37.6 °C)
+- The hottest councils cluster in the more industrial northwest (Moonee Valley, Maribyrnong, Moreland); the coolest are the leafy southeast suburbs (Boroondara, Bayside, Stonnington)
+- Surface temperature shows a moderate negative correlation with vegetation (r = −0.47) — greener areas are measurably cooler, confirming vegetation as one major driver of urban heat
+
+**Data:** Landsat 9 Collection 2 Level-2 (USGS); ABS 2021 Local Government Area boundaries (both open data)
+
+- [View Project & Maps](https://github.com/joseph-pradil/gis-portfolio/tree/main/02-melbourne-urban-heat)
+- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/02-melbourne-urban-heat/notebooks/01_explore_temperature.ipynb)
+
+**Limitations / next steps:** A single-date snapshot, not a multi-year climatology. Surface temperature is not air temperature — it runs hotter. A production version would average several summer scenes and overlay socioeconomic data to map heat *vulnerability*, not just heat.
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com
