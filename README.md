@@ -29,6 +29,8 @@ Core spatial operations applied to Australian cities and regions:
 
 A bushfire risk model for New South Wales that goes beyond "where do fires happen" to ask the question that actually matters: **where do fires threaten people?**
 
+**Decision this supports:** Prioritising fire-mitigation resources and emergency planning — directing effort to where fire danger and population overlap, not just where fires are frequent.
+
 **Why I built this:** I work in utility infrastructure in Los Angeles, a region that lives with wildfire every year. That experience taught me that a fire's true cost isn't measured by how often an area burns — it's measured by what's at stake when it does. I built this model to reflect that, using Australian data since I'm targeting GIS roles in Australia and NSW faces near-identical fire challenges to California.
 
 **Method:**
@@ -52,6 +54,8 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 ### Project 2 — Melbourne Urban Heat Island Analysis
 
 A satellite-based heat map of inner Melbourne that asks not just **where is it hottest**, but **why** — by testing how surface temperature tracks vegetation cover, council by council.
+
+**Decision this supports:** Targeting urban-cooling investment — tree canopy and reflective surfaces — to the councils that run hottest and have the least vegetation.
 
 **Why I built this:** Coming from utility infrastructure in heat- and fire-prone California, I'm interested in how cities manage extreme heat — a growing issue for Australian urban planning. Surface temperature from satellite imagery is a direct, repeatable way to find a city's heat-vulnerable areas and make the case for where cooling investment (tree canopy, reflective surfaces) should go.
 
