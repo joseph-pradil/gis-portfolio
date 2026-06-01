@@ -70,7 +70,7 @@ A satellite-based heat map of inner Melbourne that asks not just **where is it h
 **Data:** Landsat 9 Collection 2 Level-2 (USGS); ABS 2021 Local Government Area boundaries (both open data)
 
 - [View Project & Maps](https://github.com/joseph-pradil/gis-portfolio/tree/main/02-melbourne-urban-heat)
-- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/02-melbourne-urban-heat/notebooks/01_explore_temperature.ipynb)
+- [View Code](https://nbviewer.org/github/joseph-pradil/gis-portfolio/blob/main/02-melbourne-urban-heat/notebooks/01_explore_temperature.ipynb)
 
 **Limitations / next steps:** A single-date snapshot, not a multi-year climatology. Surface temperature is not air temperature — it runs hotter. A production version would average several summer scenes and overlay socioeconomic data to map heat *vulnerability*, not just heat.
 
