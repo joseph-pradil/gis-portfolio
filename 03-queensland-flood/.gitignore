@@ -1,0 +1,11 @@
+# Raw data — far too large for GitHub
+data/raw/
+
+# Processed intermediates
+data/processed/
+
+# Jupyter checkpoint clutter
+.ipynb_checkpoints/
+
+# macOS noise
+.DS_Store

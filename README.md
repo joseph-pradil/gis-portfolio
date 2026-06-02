@@ -1,6 +1,6 @@
 # GIS Portfolio — Joseph Pradil
 
-Australian and New Zealand focused spatial analysis projects built with Python, ArcGIS, and PostGIS.
+Australian and New Zealand focused spatial analysis projects built with Python, ArcGIS, Tableau, and PostGIS.
 
 ## About Me
 GIS Analyst with experience in ArcGIS Pro, Python (arcpy/geopandas), SQL/PostGIS, and ArcGIS Online. 
@@ -10,7 +10,7 @@ Currently based in the US, open to opportunities in Australia 🇦🇺 and New Z
 - **Python:** geopandas, rasterio, shapely, folium, numpy, pandas
 - **GIS:** ArcGIS Pro, ArcGIS Online, Experience Builder, StoryMaps
 - **Database:** PostGIS, SQL
-- **Visualization:** folium, matplotlib, ArcGIS Dashboards
+- **Visualization:** Tableau, folium, matplotlib, ArcGIS Dashboards
 
 ## Projects
 
@@ -77,6 +77,32 @@ A satellite-based heat map of inner Melbourne that asks not just **where is it h
 - [View Code](https://nbviewer.org/github/joseph-pradil/gis-portfolio/blob/main/02-melbourne-urban-heat/notebooks/01_explore_temperature.ipynb)
 
 **Limitations / next steps:** A single-date snapshot, not a multi-year climatology. Surface temperature is not air temperature — it runs hotter. A production version would average several summer scenes and overlay socioeconomic data to map heat *vulnerability*, not just heat.
+
+### Project 3 — Greater Brisbane Flood Exposure Dashboard
+
+An interactive dashboard quantifying how many people and homes sit in Brisbane's flood-risk zones — and which suburbs are most exposed.
+
+**Decision this supports:** Prioritising flood-resilience investment and emergency planning — identifying which suburbs have the most people and dwellings exposed to high- and medium-likelihood flooding.
+
+**Why I built this:** After the 2011 and 2022 floods, flood exposure is one of the most pressing planning questions in South-East Queensland. A hazard map alone shows where water goes, not who and what is in the way. This project joins flood-likelihood mapping to census population and dwelling counts to answer the question that drives investment: which suburbs have the most people and homes exposed, and at what likelihood.
+
+**Method:**
+1. Took Brisbane City Council's flood-likelihood layer (231,445 polygons) and dissolved it into four likelihood zones (High / Medium / Low / Very Low)
+2. Joined ABS 2021 Census population (G01) and dwelling (G37) counts at suburb (SA2) level, filtered to Greater Brisbane (243 suburbs)
+3. Estimated exposure by areal interpolation — apportioning each suburb's people and dwellings to flood zones by area
+4. Built an interactive Tableau dashboard: exposure map, ranked suburb bar chart, and headline KPIs
+
+**Key findings:**
+- ~302,000 people and ~116,000 dwellings across Greater Brisbane sit within mapped flood-risk zones
+- ~118,000 people are in high-likelihood zones specifically, concentrated in riverside and bayside suburbs
+- The most-exposed suburbs — Newstead–Bowen Hills, Wynnum West–Hemmant, Nudgee–Banyo, West End, Boondall — are all recognisable Brisbane River corridor and bayside areas that flooded in 2011 and/or 2022
+
+**Data:** Brisbane City Council Flood Awareness (Flood Risk Overall); ABS 2021 Census G01 & G37, SA2 level (both open data)
+
+- [Live Interactive Dashboard (Tableau Public)](https://public.tableau.com/app/profile/joseph.bolleddu/viz/GreaterBrisbaneFloodExposure/Dashboard1)
+- [View Project & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/03-queensland-flood)
+
+**Limitations / next steps:** Exposure is estimated by areal interpolation, which assumes population is spread evenly within each suburb — so figures are estimates, not building-level counts. The flood layer gives likelihood, not depth, so it identifies who is exposed, not how severe the impact would be. A production version would use building-footprint data and overlay socioeconomic indicators to map flood *vulnerability*, not just exposure.
 
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
