@@ -1,6 +1,6 @@
 # GIS Portfolio — Joseph Pradil
 
-Australian and New Zealand focused spatial analysis projects built with Python, ArcGIS, Tableau, and PostGIS.
+Australian and New Zealand focused spatial analysis projects built with Python and Tableau.
 
 ## About Me
 GIS Analyst with experience in ArcGIS Pro, Python (arcpy/geopandas), SQL/PostGIS, and ArcGIS Online. 
