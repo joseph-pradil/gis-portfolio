@@ -1,0 +1,13 @@
+# Raw + processed data
+data/raw/
+data/processed/
+
+# OSMnx API cache
+cache/
+notebooks/cache/
+
+# Jupyter checkpoint clutter
+.ipynb_checkpoints/
+
+# macOS noise
+.DS_Store

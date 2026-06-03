@@ -7,7 +7,7 @@ GIS Analyst with experience in ArcGIS Pro, Python (arcpy/geopandas), SQL/PostGIS
 Currently based in the US, open to opportunities in Australia 🇦🇺 and New Zealand 🇳🇿.
 
 ## Tech Stack
-- **Python:** geopandas, rasterio, shapely, folium, numpy, pandas
+- **Python:** geopandas, rasterio, shapely, folium, osmnx, networkx, numpy, pandas
 - **GIS:** ArcGIS Pro, ArcGIS Online, Experience Builder, StoryMaps
 - **Database:** PostGIS, SQL
 - **Visualization:** Tableau, folium, matplotlib, ArcGIS Dashboards
@@ -103,6 +103,31 @@ An interactive dashboard quantifying how many people and homes sit in Brisbane's
 - [View Project & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/03-queensland-flood)
 
 **Limitations / next steps:** Exposure is estimated by areal interpolation, which assumes population is spread evenly within each suburb — so figures are estimates, not building-level counts. The flood layer gives likelihood, not depth, so it identifies who is exposed, not how severe the impact would be. A production version would use building-footprint data and overlay socioeconomic indicators to map flood *vulnerability*, not just exposure.
+
+### Project 4 — Victorian Flood Road-Access Analysis
+
+A road-network connectivity analysis of the Rochester–Echuca region: when a major flood hits, which towns lose road access and how does the network break apart?
+
+**Decision this supports:** Prioritising road-resilience investment and emergency planning — identifying which communities get isolated in a major flood and where the network's critical weak points are.
+
+**Why I built this:** In October 2022 Rochester was cut off and evacuated when the Campaspe River flooded. A hazard map shows where water goes; for emergency planning the sharper question is which communities get isolated — a road-network connectivity question, not a hazard-mapping one. So this project models the actual road network and tests what happens to it under flood.
+
+**Method:**
+1. Pulled the drivable road network for the Rochester–Echuca corridor from OpenStreetMap (OSMnx) — 2,449 intersections, 6,107 road segments, modelled as a graph
+2. Overlaid Victoria's 1% AEP (1-in-100-year) flood extent — the statutory floodplain layer used in Victorian planning schemes
+3. Identified and removed flooded road segments (31% of the network), then ran shortest-path and connectivity analysis on the damaged graph
+4. Determined which towns lose access to the regional centre (Echuca) and how the network fragments
+
+**Key findings:**
+- All four surrounding towns — Rochester, Elmore, Lockington, Kyabram — lose road access to Echuca in a 1% flood
+- The flood fragments the network into isolated pockets: the major towns end up in separate zones that cannot reach one another
+- The modelled isolation reproduces the real access collapse of the 2022 floods, providing independent validation
+
+**Data:** OpenStreetMap road network (via OSMnx); Victorian Government 1% AEP flood extent (both open data)
+
+- [View Project, Maps & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/04-victoria-road-access)
+
+**Limitations / next steps:** "Cut off" is defined at the level of the modelled drivable network intersecting the flood extent — it doesn't account for flood depth, timing, or high-clearance vehicles, so it identifies network-level isolation rather than guaranteed physical unreachability. A production version would rank individual roads and bridges by criticality to pinpoint the highest-priority resilience investments.
 
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
