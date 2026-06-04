@@ -4,6 +4,8 @@ Mapping land surface temperature across inner Melbourne and testing how strongly
 
 **Key finding:** On a summer afternoon, inner Melbourne's councils differ by ~3.5 °C in mean land surface temperature, and the hottest areas are consistently the least vegetated (r = −0.47 across land surfaces). The hottest councils cluster in the industrial northwest; the coolest are the leafy southeast suburbs.
 
+**Decision this supports:** Targeting urban-cooling investment — tree canopy and reflective surfaces — to the councils that run hottest and have the least vegetation.
+
 ![Land surface temperature across inner Melbourne](outputs/melbourne_lst.png)
 
 ---
@@ -64,9 +66,9 @@ The mean column is the reliable signal; single-pixel maxima are noisier and show
 | 12 | Bayside (Vic.) | 34.31 | 40.55 |
 | 13 | Boroondara | 34.10 | 45.04 |
 
-## What this is useful for
+## Recommendation
 
-A council reading this can identify its heat-priority areas and see that low vegetation is a consistent companion of high surface heat — supporting the case for targeted tree-canopy and cool-surface investment in the northwest councils.
+Cooling investment — street-tree canopy, reflective and permeable surfaces, and new green space — should be directed first at the northwest councils (Moonee Valley, Maribyrnong, Moreland), which run hottest precisely because they are the least vegetated. The measured vegetation–temperature relationship gives councils a concrete, repeatable target: raising canopy cover in these areas is the most direct lever available on surface heat, and the ranking lets limited budget be triaged to where it cuts the most heat per dollar.
 
 ## Reproducing
 

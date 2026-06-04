@@ -49,9 +49,13 @@ Unlike a hazard-overlay map, this is a **network analysis**: the road system is 
 
 Both open data.
 
+## Recommendation
+
+Because every studied town loses its connection to Echuca, road-resilience investment should focus on securing at least one all-weather access route per community — through bridge-raising, road-embankment works, or designated flood-evacuation corridors — rather than spreading effort evenly across the network. The fragmentation result also makes the case for pre-positioning emergency supplies and services within each isolated pocket, since cross-region resupply by road cannot be relied on during a major flood.
+
 ## Limitations / next steps
 
-- **"Cut off" is defined at the level of the modelled drivable road network intersecting the 1% flood polygon.** It does not account for flood depth or timing, temporary causeways, or high-clearance vehicles passing through shallow water — so it identifies network-level isolation, not a guarantee that a town is physically unreachable by any means.
+- **"Cut off" is defined at the level of the modelled drivable road network intersecting the flat 2D flood extent.** It does not account for flood depth or timing, temporary causeways, or high-clearance vehicles passing through shallow water — so it identifies network-level isolation, not a guarantee that a town is physically unreachable by any means. A more robust pipeline would intersect the road network with a flood-**depth** raster and remove roads only where depth exceeds a critical threshold (e.g. >0.3 m, where standard vehicles lose traction).
 - **The flood extent is a 2014 modelled capture.** The 1% AEP floodplain is a long-term statistical model rather than a single event, so it remains a standard planning reference, but a production analysis would use the latest modelling.
 - A natural extension would rank individual road segments and bridges by *criticality* (how many people lose access if that one link fails) to pinpoint the highest-priority resilience investments.
 

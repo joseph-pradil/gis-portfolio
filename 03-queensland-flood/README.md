@@ -37,9 +37,13 @@ After the 2011 and 2022 floods, flood exposure is one of the most pressing plann
 
 All open data.
 
+## Recommendation
+
+Flood-resilience spending — property-level mitigation, drainage upgrades, evacuation planning, and revised building controls — should be prioritised in the high-likelihood riverside and bayside suburbs the dashboard ranks at the top (Newstead–Bowen Hills, Wynnum West–Hemmant, Nudgee–Banyo, West End, Boondall). Presenting exposure as a ranked, filterable dashboard lets a council or insurer triage limited budget to the suburbs where the most people and dwellings sit in the most likely flood zones, rather than spreading mitigation thinly across the whole city.
+
 ## Limitations / next steps
 
-- **Areal interpolation assumes population is spread evenly within each suburb.** In reality people and dwellings cluster, so exposure is an estimate, not a building-level count. A production version would use building-footprint or address-point data for precise counts.
+- **Areal interpolation assumes population is spread evenly within each suburb.** In reality people and dwellings cluster, so exposure is an estimate, not a building-level count — and a flood zone hitting the empty part of a large suburb will overstate the people affected. A production version would use **dasymetric mapping** — masking unpopulated land with land-use zones or building footprints (e.g. Microsoft's open building footprints) before distributing census counts — to sharpen the estimate.
 - **Likelihood, not depth.** The flood layer gives likelihood categories, not flood depth or velocity — so it identifies *who is exposed*, not *how severe* the impact would be.
 - **Occupied private dwellings only** — excludes unoccupied dwellings and non-private dwellings (hotels, etc.).
 - A natural extension would overlay socioeconomic indicators to map flood *vulnerability* (exposure × capacity to cope), not just exposure.
