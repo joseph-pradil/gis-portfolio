@@ -3,8 +3,7 @@
 Australian and New Zealand focused spatial analysis projects built with Python and Tableau.
 
 ## About Me
-GIS Analyst with experience in ArcGIS Pro, Python (arcpy/geopandas), SQL/PostGIS, and ArcGIS Online. 
-Currently based in the US, open to opportunities in Australia 🇦🇺 and New Zealand 🇳🇿.
+Spatial analyst with utility-infrastructure experience and advanced Python-based geospatial analytics. I work in utility network and asset GIS, and build decision-support analyses for hazard, exposure, and infrastructure-resilience problems. Currently based in the US, open to opportunities in Australia 🇦🇺 and New Zealand 🇳🇿.
 
 ## Tech Stack
 - **Python:** geopandas, rasterio, shapely, folium, osmnx, networkx, numpy, pandas
@@ -44,6 +43,8 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 - The highest-risk zones are also the most populated — fire danger concentrates exactly where people have built, not in empty bush
 - The consequence model surfaces zones a frequency-only model would miss: one area with only moderate fire history but 380,000 residents ranks among the top consequence hotspots
 
+**Recommendation:** The model flags the Sydney metropolitan bushland-urban interface — the northern (Hornsby–Ku-ring-gai), southern (Sutherland), and south-western suburbs where dense population abuts fire-prone bush, plus Greater Newcastle — as the highest-consequence priorities for fuel-reduction, evacuation-route planning, and asset-hardening investment. Notably, it elevates a moderate-frequency southern-Sydney zone holding ~380,000 residents into the top tier: a hotspot a frequency-only map would overlook, but one where the scale of exposed population makes mitigation critical.
+
 **Data:** NSW NPWS Fire History; Kontur Population Australia 2023 (both open data)
 
 - [Live Consequence Map](https://transcendent-sable-e6a8a6.netlify.app/nsw_bushfire_consequence.html)
@@ -71,6 +72,8 @@ A satellite-based heat map of inner Melbourne that asks not just **where is it h
 - The hottest councils cluster in the more industrial northwest (Moonee Valley, Maribyrnong, Moreland); the coolest are the leafy southeast suburbs (Boroondara, Bayside, Stonnington)
 - Surface temperature shows a moderate negative correlation with vegetation (r = −0.47) — greener areas are measurably cooler, confirming vegetation as one major driver of urban heat
 
+**Recommendation:** Cooling investment — street-tree canopy, reflective and permeable surfaces, green space — should be directed first at the northwest councils (Moonee Valley, Maribyrnong, Moreland), which run hottest precisely because they are the least vegetated. The vegetation–temperature relationship gives councils a measurable, repeatable target: raising canopy cover in these areas is the most direct lever on surface heat.
+
 **Data:** Landsat 9 Collection 2 Level-2 (USGS); ABS 2021 Local Government Area boundaries (both open data)
 
 - [View Project & Maps](https://github.com/joseph-pradil/gis-portfolio/tree/main/02-melbourne-urban-heat)
@@ -97,12 +100,14 @@ An interactive dashboard quantifying how many people and homes sit in Brisbane's
 - ~118,000 people are in high-likelihood zones specifically, concentrated in riverside and bayside suburbs
 - The most-exposed suburbs — Newstead–Bowen Hills, Wynnum West–Hemmant, Nudgee–Banyo, West End, Boondall — are all recognisable Brisbane River corridor and bayside areas that flooded in 2011 and/or 2022
 
+**Recommendation:** Flood-resilience spending — property-level mitigation, drainage upgrades, evacuation planning, and revised building controls — should be prioritised in the high-likelihood riverside and bayside suburbs the dashboard ranks at the top (Newstead–Bowen Hills, Wynnum West–Hemmant, Nudgee–Banyo, West End, Boondall). Presenting exposure as a ranked, filterable dashboard lets a council or insurer triage limited budget to the suburbs where the most people and dwellings sit in the most likely flood zones.
+
 **Data:** Brisbane City Council Flood Awareness (Flood Risk Overall); ABS 2021 Census G01 & G37, SA2 level (both open data)
 
 - [Live Interactive Dashboard (Tableau Public)](https://public.tableau.com/app/profile/joseph.bolleddu/viz/GreaterBrisbaneFloodExposure/Dashboard1)
 - [View Project & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/03-queensland-flood)
 
-**Limitations / next steps:** Exposure is estimated by areal interpolation, which assumes population is spread evenly within each suburb — so figures are estimates, not building-level counts. The flood layer gives likelihood, not depth, so it identifies who is exposed, not how severe the impact would be. A production version would use building-footprint data and overlay socioeconomic indicators to map flood *vulnerability*, not just exposure.
+**Limitations / next steps:** Exposure is estimated by areal interpolation, which assumes population is spread evenly within each suburb — so figures are estimates, not building-level counts. A production model would use dasymetric mapping — masking unpopulated land with land-use zones or building footprints (e.g. Microsoft's open building footprints) before distributing census counts — to avoid overestimating exposure where a flood zone hits the empty part of a large suburb. The flood layer also gives likelihood, not depth, so it identifies who is exposed, not how severe the impact would be.
 
 ### Project 4 — Victorian Flood Road-Access Analysis
 
@@ -123,11 +128,13 @@ A road-network connectivity analysis of the Rochester–Echuca region: when a ma
 - The flood fragments the network into isolated pockets: the major towns end up in separate zones that cannot reach one another
 - The modelled isolation reproduces the real access collapse of the 2022 floods, providing independent validation
 
+**Recommendation:** Because every studied town loses its connection to Echuca, road-resilience investment should focus on securing at least one all-weather access route per community — through bridge-raising, road-embankment works, or designated flood-evacuation corridors — rather than spreading effort evenly. The fragmentation result also makes the case for pre-positioning emergency supplies and services within each isolated pocket, since cross-region resupply by road cannot be relied on during a major flood.
+
 **Data:** OpenStreetMap road network (via OSMnx); Victorian Government 1% AEP flood extent (both open data)
 
 - [View Project, Maps & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/04-victoria-road-access)
 
-**Limitations / next steps:** "Cut off" is defined at the level of the modelled drivable network intersecting the flood extent — it doesn't account for flood depth, timing, or high-clearance vehicles, so it identifies network-level isolation rather than guaranteed physical unreachability. A production version would rank individual roads and bridges by criticality to pinpoint the highest-priority resilience investments.
+**Limitations / next steps:** "Cut off" is defined at the level of the modelled drivable network intersecting the flat 2D flood extent — it doesn't account for flood depth, timing, or high-clearance vehicles. A more robust pipeline would intersect the road network with a flood-depth raster and remove roads only where water depth exceeds a critical threshold (e.g. >0.3 m, where standard vehicles lose traction), and rank individual roads and bridges by criticality to pinpoint the highest-priority resilience investments.
 
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
