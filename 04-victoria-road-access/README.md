@@ -16,6 +16,31 @@ In October 2022, Rochester was almost entirely cut off and evacuated when the Ca
 
 Unlike a hazard-overlay map, this is a **network analysis**: the road system is modelled as a graph (intersections and road segments), flooded roads are removed, and shortest-path / connectivity algorithms determine which towns can still reach the regional centre and each other. The output isn't "where floods" — it's "who gets isolated."
 
+<details>
+<summary><b>View core network-analysis code</b></summary>
+
+```python
+# Remove flooded road segments from the network graph
+G_flood = G_proj.copy()
+for u, v, k in flooded_edges:
+    if G_flood.has_edge(u, v, k):
+        G_flood.remove_edge(u, v, k)
+
+# Test each town's road access to the regional centre (Echuca), pre- and post-flood
+echuca = town_nodes["Echuca"]
+for name, node in town_nodes.items():
+    if name == "Echuca":
+        continue
+    normal = nx.shortest_path_length(G_proj, node, echuca, weight="length")
+    try:
+        flooded = nx.shortest_path_length(G_flood, node, echuca, weight="length")
+        print(f"{name}: {normal/1000:.1f} km -> {flooded/1000:.1f} km")
+    except nx.NetworkXNoPath:
+        print(f"{name}: CUT OFF when flooded (normal route was {normal/1000:.1f} km)")
+```
+
+</details>
+
 ## Method
 
 1. **Road network:** Pulled the drivable road network for the Rochester–Echuca corridor from OpenStreetMap (via OSMnx) — 2,449 intersections, 6,107 road segments.
