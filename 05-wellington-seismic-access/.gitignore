@@ -1,0 +1,11 @@
+# Data — keep out of git
+data/raw/
+data/processed/
+
+# OSMnx cache
+cache/
+notebooks/cache/
+
+# Jupyter + macOS noise
+.ipynb_checkpoints/
+.DS_Store

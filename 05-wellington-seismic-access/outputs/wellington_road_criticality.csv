@@ -1,0 +1,85 @@
+road_name,total_added_person_km,segments,highway
+Adelaide Road,560092.4634002618,54,secondary
+Aro Street,164889.8189694724,14,secondary
+Hutt Road,146084.4900590415,15,primary
+Main Road,129516.57717938327,38,secondary
+Johnsonville Porirua Motorway,110443.66690214204,10,motorway
+Te Ara Nui o Te Rangihaeata / Transmission Gully Motorway,107788.2069591298,1,motorway
+Newlands Road,91823.66940602828,19,secondary
+Karori Road,66988.18391573906,46,secondary
+Kaiwharawhara Road,50213.26369662095,6,secondary
+John Street,49734.52351615429,10,secondary
+Wellington Road,37838.62485534167,15,secondary
+Crawford Road,35057.299234327555,13,secondary
+Riddiford Street,33841.25833183098,27,secondary
+Johnsonville Road,33202.12165386915,12,secondary
+Constable Street,31549.141201329232,10,secondary
+Burma Road,30945.345268892288,14,secondary
+Wallace Street,27199.347979907987,10,secondary
+Centennial Highway,23977.337853551388,16,primary
+Onslow Road,22392.95714356899,10,secondary
+Rugby Street,20752.06154231,1,trunk
+Miramar Avenue,20706.39280576706,4,secondary
+Raroa Road,17778.295858107565,20,secondary
+Oriental Parade,16265.42024019742,6,secondary
+The Parade,13746.470473820687,8,secondary
+Cashmere Avenue,11895.83416954422,14,secondary
+Calabar Road,9092.650444118024,12,trunk
+Upland Road,8729.569278350831,8,secondary
+Churchill Drive,7132.0071666746135,3,secondary
+Curtis Street,6868.046167776108,14,secondary
+"Cobham Drive, Miramar Avenue",6268.909052728414,1,secondary
+"Miramar Avenue, Cobham Drive",6268.909052728414,1,secondary
+Onepu Road,6175.117731498718,14,secondary
+Chaytor Street,6134.974183995247,8,secondary
+Sussex Street,6070.159554259777,2,trunk
+Aotea Quay,5855.130052816868,5,primary
+Jervois Quay,4548.718774082422,6,primary
+Buckle Street,4141.529217411757,3,trunk
+Raroa Crescent,4014.7790741615295,4,secondary
+Box Hill,3818.312616191864,8,secondary
+Crofton Road,3498.4306074347496,4,secondary
+Waterloo Quay,3351.1269560799597,8,primary
+Brooklyn Road,3281.089653591156,4,secondary
+The Terrace,3262.270116504669,4,secondary
+Cobham Drive,2770.898792132378,4,trunk
+Webb Street,2755.3128202927114,12,secondary
+"Dufferin Street, Rugby Street",2532.0043781461713,1,trunk
+Molesworth Street,2465.7193922271726,8,secondary
+Broadway,2183.3073767337796,10,secondary
+"Taurima Street, Mount Victoria Tunnel, Paterson Street",1979.1288454360963,2,trunk
+Ohiro Road,1949.0285461063386,8,secondary
+Wilton Road,1871.162431909561,2,secondary
+Taranaki Street,1587.3117424588204,6,secondary
+Cockayne Road,1261.1934399399756,2,secondary
+Arthur Street,1189.6209016406535,3,trunk
+Takapu Road,1166.9169501175882,4,secondary
+Cambridge Terrace,1068.0542720379829,2,primary
+Karo Drive,1010.3935882284641,4,trunk
+Dufferin Street,941.3587730600834,2,trunk_link
+"Waterloo Quay, Aotea Quay",854.1282704081535,1,primary
+Customhouse Quay,841.0779482171536,7,primary
+Middleton Road,490.9496187791824,13,secondary
+Featherston Street,476.50268790721896,2,secondary
+Whitmore Street,420.3759640054703,2,secondary
+Willis Street,416.26298383641245,1,secondary
+"Willis Street, Aro Street",416.26298383641245,1,secondary
+Ira Street,389.1009693202972,2,secondary
+Kent Terrace,337.9708041706085,7,primary
+Victoria Street,331.01290427470207,6,secondary
+Ottawa Road,296.83724930477143,2,secondary
+Paterson Street,261.0394770927429,1,trunk
+"Customhouse Quay, Jervois Quay",239.84959876465797,1,primary
+"Terrace Motorway Tunnel, Wellington Urban Motorway",218.43701725769043,1,motorway
+"Wellington Urban Motorway, Terrace Motorway Tunnel",218.43701725769043,1,motorway
+"Kelburn Viaduct, Upland Road",129.3916881761551,2,secondary
+Moorefield Road,121.05544940948486,2,secondary
+Ruahine Street,105.21773258590699,1,trunk
+Evans Bay Parade,90.14519585704804,2,secondary
+Wellington Urban Motorway,85.74064989900589,3,motorway
+Glenmore Street,72.20760975170136,4,secondary
+"Chaytor Street, Glenmore Street, Karori Tunnel",69.19657820796967,2,secondary
+"Buckle Street, Dufferin Street",25.383220195293426,1,trunk
+Tinakori Road,12.514196325302125,1,secondary
+Hawkestone Street,12.48764407968521,1,secondary
+Kelburn Parade,11.85102088022232,1,secondary

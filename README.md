@@ -136,6 +136,33 @@ A road-network connectivity analysis of the Rochester–Echuca region: when a ma
 
 **Limitations / next steps:** "Cut off" is defined at the level of the modelled drivable network intersecting the flat 2D flood extent — it doesn't account for flood depth, timing, or high-clearance vehicles. A more robust pipeline would intersect the road network with a flood-depth raster and remove roads only where water depth exceeds a critical threshold (e.g. >0.3 m, where standard vehicles lose traction), and rank individual roads and bridges by criticality to pinpoint the highest-priority resilience investments.
 
+### Project 5 — Wellington Road-Network Criticality (Seismic Access)
+
+A network-criticality analysis of earthquake-prone Wellington: which individual roads, if damaged, would most degrade the population's access to hospital — and so should be hardened first?
+
+**Decision this supports:** Prioritising seismic road-resilience investment — identifying the specific roads whose failure imposes the greatest access burden, so bridge-strengthening and route-hardening target the highest-impact links first.
+
+**Why I built this:** Earthquakes are New Zealand's defining hazard, and Wellington's constrained geography funnels road access through a few corridors. After a major quake the question isn't just what's damaged, but which damaged road hurts most — a network-criticality question. This project also delivers the "rank roads by criticality" extension flagged as a next step in Project 4, applied to NZ's signature hazard.
+
+**Method:**
+1. Pulled Wellington City's drivable road network from OpenStreetMap (OSMnx) — 4,445 intersections, 9,850 road segments
+2. Assigned 2023 NZ Census population (205,035 people across 88 SA2 areas) to network nodes
+3. For each of 1,628 major road links, removed it and measured the population-weighted increase in travel distance to Wellington Hospital (person-km of added detour) — a detour-weighted criticality score
+4. Ranked roads by total added burden and mapped the result
+
+**Key findings:**
+- Wellington's major road network is largely redundant — only ~700 of 1,628 links cause any added travel burden when removed — but criticality is highly concentrated in a few roads
+- The northern motorway lifeline (Johnsonville–Porirua / Transmission Gully) is the single most critical route, with no genuine alternative for northern access
+- Adelaide Road — the arterial spine to the hospital itself — carries the highest aggregate criticality, making the hospital approach a key vulnerability; single-access hill suburbs (Karori, Newlands) also rank high
+
+**Recommendation:** Seismic-hardening investment should concentrate on the small set of high-criticality roads rather than spread evenly. The clear priorities are the northern motorway lifeline and Adelaide Road (the hospital approach), followed by single-access hill-suburb arterials. Because the network is otherwise redundant, targeted strengthening of these few links delivers far more resilience per dollar than uniform investment.
+
+**Data:** OpenStreetMap road network (via OSMnx); 2023 Census usually-resident population by SA2 (Stats NZ) (both open data)
+
+- [View Project, Maps & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/05-wellington-seismic-access)
+
+**Limitations / next steps:** Criticality is measured to a single destination (Wellington Hospital); the person-km figures are indicative rather than precise (aggregating across a road's segments slightly over-counts). A fuller analysis would test multiple destinations and model simultaneous failure of all roads crossing the Wellington Fault rupture zone, weighted by each link's actual seismic-failure likelihood.
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com
