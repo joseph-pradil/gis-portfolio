@@ -163,6 +163,33 @@ A network-criticality analysis of earthquake-prone Wellington: which individual 
 
 **Limitations / next steps:** Criticality is measured to a single destination (Wellington Hospital); the person-km figures are indicative rather than precise (aggregating across a road's segments slightly over-counts). A fuller analysis would test multiple destinations and model simultaneous failure of all roads crossing the Wellington Fault rupture zone, weighted by each link's actual seismic-failure likelihood.
 
+### Project 6 — Auckland Compound Hazard (Flood + Landslide Overlap)
+
+A multi-hazard overlay for Auckland: where do flood and landslide risk overlap, and how many people live on that double-jeopardy land that single-hazard maps miss?
+
+**Decision this supports:** Prioritising resilience investment and planning scrutiny for communities facing *compound* hazard — land exposed to both flooding and landslides that a flood map alone, or a landslide map alone, would never flag.
+
+**Why I built this:** The 2023 Auckland Anniversary floods and Cyclone Gabrielle struck with both flooding and landslides — the latter triggering ~50,000 slips, NZ's largest landslide event on record. Auckland now maps both hazards (feeding LIM reports and Plan Change 120 consent rules), but assesses them separately. The places where they coincide are exactly the terrain that failed in 2023, yet they fall through the cracks of single-hazard planning. This project overlays the two to surface that blind spot.
+
+**Method:**
+1. Took Auckland Council's current 1% AEP flood plains (12,670 polygons, predominantly post-2023 modelling), dissolved into a flood zone
+2. Pulled the 2025 region-wide Large-Scale Landslide Susceptibility layer (TR2025/7) via the council's ArcGIS REST API (86,475 polygons), filtered to High + Very High and dissolved
+3. Intersected the two to isolate the compound (both-hazard) zone
+4. Estimated population in each zone by areal interpolation from 2023 NZ Census SA2 data (~1.72M Auckland population)
+
+**Key findings:**
+- ~194,000 Aucklanders live in the flood zone and ~102,000 in the high-landslide zone, but only ~5,600 live in the compound zone where both overlap
+- The small overlap is the point: flood-prone (flat) and landslide-prone (steep) land are mostly different terrain, so these ~5,600 people are systematically invisible to single-hazard planning — a flood map doesn't flag them, and neither does a landslide map
+- The compound population concentrates in West and North Auckland's hill-and-gully suburbs (Western Heights, Bayview, Massey, Glen Eden, Stillwater, Papakura East) — the same terrain hit hardest in 2023
+
+**Recommendation:** The compound zone should be treated as a distinct planning category rather than left to fall between two separately-administered hazard layers. The ~5,600 people in West and North Auckland's overlap suburbs warrant prioritised attention — combined flood-and-slope geotechnical assessment, stricter consent scrutiny, and targeted stormwater and slope-stabilisation works. Overlaying existing official hazard layers is a low-cost way for a council to surface this blind spot from data it already holds.
+
+**Data:** Auckland Council flood plains & Large-Scale Landslide Susceptibility (TR2025/7, via ArcGIS REST API); 2023 Census population by SA2 (Stats NZ) (all open data)
+
+- [View Project, Maps & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/06-auckland-flood)
+
+**Limitations / next steps:** Population is estimated by areal interpolation (people assumed evenly spread within each SA2), so the compound figure is an estimate, not a building-level count. The analysis uses large-scale landslide susceptibility; the shallow-landslide layer (which dominated the 2023 slips) is a separate official dataset a refined version would also overlay. Susceptibility indicates where landslides are more likely, not that they will occur. A natural extension would add coastal inundation for a three-hazard analysis and overlay socioeconomic data to map compound *vulnerability*.
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com

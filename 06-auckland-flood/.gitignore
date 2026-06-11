@@ -1,0 +1,6 @@
+data/raw/
+data/processed/
+cache/
+notebooks/cache/
+.ipynb_checkpoints/
+.DS_Store
