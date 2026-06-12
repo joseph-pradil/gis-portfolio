@@ -1,10 +1,10 @@
 # Melbourne Urban Heat Island Analysis
 
-Mapping land surface temperature across inner Melbourne and testing how strongly it tracks vegetation cover — using a single summer Landsat 9 scene, processed in Python.
+Mapping land surface temperature across inner Melbourne and testing how strongly it tracks vegetation cover - using a single summer Landsat 9 scene, processed in Python.
 
 **Key finding:** On a summer afternoon, inner Melbourne's councils differ by ~3.5 °C in mean land surface temperature, and the hottest areas are consistently the least vegetated (r = −0.47 across land surfaces). The hottest councils cluster in the industrial northwest; the coolest are the leafy southeast suburbs.
 
-**Decision this supports:** Targeting urban-cooling investment — tree canopy and reflective surfaces — to the councils that run hottest and have the least vegetation.
+**Decision this supports:** Targeting urban-cooling investment - tree canopy and reflective surfaces - to the councils that run hottest and have the least vegetation.
 
 ![Land surface temperature across inner Melbourne](outputs/melbourne_lst.png)
 
@@ -12,7 +12,7 @@ Mapping land surface temperature across inner Melbourne and testing how strongly
 
 ## The question
 
-Australian cities are warming, and the urban heat island effect — where built-up areas run hotter than vegetated ones — has direct consequences for health, energy demand, and liveability. Councils need to know *where* heat concentrates and *why*, so cooling investment (tree canopy, reflective surfaces) goes where it matters.
+Australian cities are warming, and the urban heat island effect - where built-up areas run hotter than vegetated ones - has direct consequences for health, energy demand, and liveability. Councils need to know *where* heat concentrates and *why*, so cooling investment (tree canopy, reflective surfaces) goes where it matters.
 
 This project asks two questions for inner Melbourne:
 
@@ -30,19 +30,19 @@ All data is open and free. A clear, low-cloud early-February scene was chosen to
 
 ## Method
 
-1. **Surface temperature** — converted the Level-2 thermal band from scaled integers to °C using the official Collection 2 scaling (`raw × 0.00341802 + 149.0`, then to Celsius), masking off-scene nodata.
-2. **Clipping** — reprojected the ABS council boundaries to the scene's CRS (UTM Zone 55S, EPSG:32655) and clipped the raster to the 13-council study area, cutting it from ~60 million pixels to ~1.3 million.
-3. **Vegetation (NDVI)** — computed `(NIR − Red) / (NIR + Red)` from the reflectance bands, clamped to the valid [−1, 1] range to remove division artifacts.
-4. **Correlation** — measured the pixel-level relationship between NDVI and temperature, masking water (NDVI < 0) so the result describes land surfaces only.
-5. **Zonal statistics** — computed mean and maximum surface temperature for each council by clipping the raster to each boundary in turn (implemented directly with `rasterio.mask`, no zonal-stats library).
+1. **Surface temperature** - converted the Level-2 thermal band from scaled integers to °C using the official Collection 2 scaling (`raw × 0.00341802 + 149.0`, then to Celsius), masking off-scene nodata.
+2. **Clipping** - reprojected the ABS council boundaries to the scene's CRS (UTM Zone 55S, EPSG:32655) and clipped the raster to the 13-council study area, cutting it from ~60 million pixels to ~1.3 million.
+3. **Vegetation (NDVI)** - computed `(NIR − Red) / (NIR + Red)` from the reflectance bands, clamped to the valid [−1, 1] range to remove division artifacts.
+4. **Correlation** - measured the pixel-level relationship between NDVI and temperature, masking water (NDVI < 0) so the result describes land surfaces only.
+5. **Zonal statistics** - computed mean and maximum surface temperature for each council by clipping the raster to each boundary in turn (implemented directly with `rasterio.mask`, no zonal-stats library).
 
 ## Findings
 
-**Surface temperature is strongly patterned by geography.** Across the 13 councils, mean surface temperature ranged from 34.1 °C (Boroondara) to 37.6 °C (Moonee Valley) — a 3.5 °C spread on a single afternoon. The hottest councils (Moonee Valley, Maribyrnong, Moreland) sit in the more industrial, less-vegetated northwest; the coolest (Boroondara, Bayside, Stonnington) are the established leafy southeast.
+**Surface temperature is strongly patterned by geography.** Across the 13 councils, mean surface temperature ranged from 34.1 °C (Boroondara) to 37.6 °C (Moonee Valley) - a 3.5 °C spread on a single afternoon. The hottest councils (Moonee Valley, Maribyrnong, Moreland) sit in the more industrial, less-vegetated northwest; the coolest (Boroondara, Bayside, Stonnington) are the established leafy southeast.
 
 ![Vegetation index (NDVI)](outputs/melbourne_ndvi.png)
 
-**Vegetation explains a meaningful share of the variation.** Across land surfaces, NDVI and surface temperature show a moderate negative correlation (**r = −0.47**): greener areas are measurably cooler. The relationship is moderate rather than strong because surface temperature also responds to building materials, moisture, and surface type — vegetation is one major driver among several.
+**Vegetation explains a meaningful share of the variation.** Across land surfaces, NDVI and surface temperature show a moderate negative correlation (**r = −0.47**): greener areas are measurably cooler. The relationship is moderate rather than strong because surface temperature also responds to building materials, moisture, and surface type - vegetation is one major driver among several.
 
 ![Vegetation vs temperature](outputs/melbourne_correlation.png)
 
@@ -68,7 +68,7 @@ The mean column is the reliable signal; single-pixel maxima are noisier and show
 
 ## Recommendation
 
-Cooling investment — street-tree canopy, reflective and permeable surfaces, and new green space — should be directed first at the northwest councils (Moonee Valley, Maribyrnong, Moreland), which run hottest precisely because they are the least vegetated. The measured vegetation–temperature relationship gives councils a concrete, repeatable target: raising canopy cover in these areas is the most direct lever available on surface heat, and the ranking lets limited budget be triaged to where it cuts the most heat per dollar.
+Cooling investment - street-tree canopy, reflective and permeable surfaces, and new green space - should be directed first at the northwest councils (Moonee Valley, Maribyrnong, Moreland), which run hottest precisely because they are the least vegetated. The measured vegetation–temperature relationship gives councils a concrete, repeatable target: raising canopy cover in these areas is the most direct lever available on surface heat, and the ranking lets limited budget be triaged to where it cuts the most heat per dollar.
 
 ## Reproducing
 
@@ -82,6 +82,6 @@ The raw Landsat scene (~940 MB) is **not** included in this repo (see `.gitignor
 
 ## Caveats
 
-- A single-date snapshot (3 Feb 2024), not a multi-year average — it shows one summer afternoon's pattern, not a climatology.
+- A single-date snapshot (3 Feb 2024), not a multi-year average - it shows one summer afternoon's pattern, not a climatology.
 - Surface temperature is not air temperature; satellite-measured surface heat runs hotter than the air temperature a weather station records.
 - 30 m Landsat resolution captures neighbourhood-scale patterns, not individual buildings.
