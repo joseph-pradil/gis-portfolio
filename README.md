@@ -48,7 +48,7 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 **Data:** NSW NPWS Fire History; Kontur Population Australia 2023 (both open data)
 
 - [Live Consequence Map](https://transcendent-sable-e6a8a6.netlify.app/nsw_bushfire_consequence.html)
-- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/project1_nsw_bushfire_risk.ipynb)
+- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/01-nsw-bushfire/project1_nsw_bushfire_risk.ipynb)
 
 **Limitations / next steps:** The frequency component is backward-looking. A production model would add vegetation/fuel type, slope, fire weather, and proximity-to-asset data. Population is residential only, so it doesn't capture critical infrastructure or daytime/transient populations.
 
