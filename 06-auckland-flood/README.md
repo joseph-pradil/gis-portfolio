@@ -1,6 +1,6 @@
 # Auckland Compound Hazard - Flood and Landslide Overlap
 
-Most hazard maps look at one threat at a time. But the 2023 Auckland Anniversary floods and Cyclone Gabrielle hit with *both* flooding and landslides - the latter triggering roughly 50,000 slips across the region, the largest landslide event in New Zealand's history. This project asks a question single-hazard maps can't: **where do flood and landslide risk overlap, and how many people live on that double-jeopardy land?**
+Most hazard maps look at one threat at a time. But the 2023 Auckland Anniversary floods and Cyclone Gabrielle hit with *both* flooding and landslides - the latter triggering more than 50,000 slips across the Auckland region, one of the most extreme landslide events in New Zealand's recorded history. This project asks a question single-hazard maps can't: **where do flood and landslide risk overlap, and how many people live on that double-jeopardy land?**
 
 **Decision this supports:** Prioritising resilience investment and planning scrutiny for the communities facing *compound* hazard - areas exposed to both flooding and landslides that a flood map alone, or a landslide map alone, would never flag as special.
 
@@ -28,7 +28,7 @@ Where an exposure analysis counts people in *one* hazard zone, this is a **multi
 - **~194,000 Aucklanders** live in the 1% flood zone; **~102,000** live in the high-landslide zone.
 - **~5,600 people** live in the **compound zone** where both hazards overlap - a small fraction of either single hazard, because flood-prone land (flat valley floors) and landslide-prone land (steep slopes) are mostly *different* terrain.
 - That small overlap is precisely the point: these ~5,600 people are **systematically invisible to single-hazard planning**. A flood map doesn't mark them out; a landslide map doesn't either. Only the overlay reveals them.
-- The compound population concentrates in West and North Auckland's hill-and-gully suburbs - Western Heights, Bayview, Massey, Glen Eden, Stillwater, Papakura East - the same steep-slope-meets-watercourse terrain that was hit hardest in 2023.
+- The compound population concentrates in West and North Auckland's hill-and-gully suburbs - Western Heights, Papakura East, Bayview, Stillwater, Massey, Glen Eden - the same steep-slope-meets-watercourse terrain that was hit hardest in 2023.
 
 ## Recommendation
 

@@ -48,7 +48,7 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 **Data:** NSW NPWS Fire History; Kontur Population Australia 2023 (both open data)
 
 - [Live Consequence Map](https://transcendent-sable-e6a8a6.netlify.app/nsw_bushfire_consequence.html)
-- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/project1_nsw_bushfire_risk.ipynb)
+- [View Code](https://github.com/joseph-pradil/gis-portfolio/blob/main/01-nsw-bushfire/project1_nsw_bushfire_risk.ipynb)
 
 **Limitations / next steps:** The frequency component is backward-looking. A production model would add vegetation/fuel type, slope, fire weather, and proximity-to-asset data. Population is residential only, so it doesn't capture critical infrastructure or daytime/transient populations.
 
@@ -189,6 +189,33 @@ A multi-hazard overlay for Auckland: where do flood and landslide risk overlap, 
 - [View Project, Maps & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/06-auckland-flood)
 
 **Limitations / next steps:** Population is estimated by areal interpolation (people assumed evenly spread within each SA2), so the compound figure is an estimate rather than a building-level count. The analysis uses large-scale landslide susceptibility; the shallow-landslide layer (which dominated the 2023 slips) is a separate official dataset a refined version would also overlay. Susceptibility indicates where landslides are more likely, not that they will occur. A natural extension would add coastal inundation for a three-hazard analysis and overlay socioeconomic data to map compound *vulnerability*.
+
+### Project 7 — Post-Fire Vegetation Recovery Monitoring (NSW)
+
+A satellite-based recovery tracker for the Gospers Mountain megafire: where did the fire burn worst, and how fast do vegetation, fuel load and ignition risk grow back?
+
+**Decision this supports:** Targeting post-fire budget, telling utilities, insurers and councils which burnt areas are regrowing fast enough to rebuild vegetation-contact and fuel-load risk (and so need re-prioritised inspection) versus which are recovering slowly (flagging erosion, slope exposure, or active revegetation spend).
+
+**Why I built this:** I work in utility infrastructure in a fire-prone US region, where post-fire vegetation regrowth under powerlines is a live ignition-risk and vegetation-management problem. After a megafire an asset owner cannot treat the whole burn scar at once; the operational question is where and when regrowth re-establishes risk. This project answers that from free satellite imagery, using the largest single-ignition fire in Australian history. It also adds cloud-scale remote sensing (Google Earth Engine) to my open-source Python work.
+
+**Method:**
+1. Built cloud-masked pre-fire and post-fire Sentinel-2 median composites (Cloud Score+ masking)
+2. Computed the Normalised Burn Ratio (NBR) for each and derived dNBR (burn severity) as the difference
+3. Classified dNBR into USGS burn-severity classes and isolated the high-severity zone (dNBR >= 0.44)
+4. Tracked NDVI quarterly across the high-severity zone from mid-2019 to early 2023 to trace the recovery trajectory
+
+**Key findings:**
+- The high-severity burn core covers ~1,218 km2, 27.9% of the study area: the footprint that carries the return-of-risk
+- Green cover in that zone crashed 63% at peak impact (NDVI 0.78 pre-fire to 0.29 in Jan 2020), then returned to pre-fire levels by Apr 2022, about 2.25 years
+- Regrowth rebounds fast (NDVI 0.29 to 0.54 in a single quarter): eucalypt recovery is vigorous, so fuel load and clearance risk return faster than a naive "recovery takes years" assumption implies
+
+**Recommendation:** Because clearance and fuel-load risk rebuild inside roughly two years, vegetation-management and line-clearance inspection cycles in high-severity zones should tighten well before the two-year mark, not after. The workflow runs on free imagery and reruns on any fire perimeter, so it scales across a whole network's fire exposure as a repeatable quarterly monitoring layer rather than a one-off study, letting an asset owner trigger action when a management zone crosses a chosen recovery threshold.
+
+**Data:** Sentinel-2 Surface Reflectance and Cloud Score+ (both open, via Google Earth Engine)
+
+- [View Project, Map & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/07-nsw-postfire-recovery)
+
+**Limitations / next steps:** NDVI is a proxy for greenness, not fuel structure or canopy height, so "green is back" is not yet "clearance is breached." A bounding-box study area slightly over-counts; swapping in the official NSW RFS fire-extent polygon would tighten the figures. The natural next build pairs this with LiDAR-derived canopy height to convert recovery into actual powerline-clearance breaches, and adds a recovery-rate threshold per management zone to trigger inspections automatically.
 
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
