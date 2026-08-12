@@ -217,6 +217,35 @@ A satellite-based recovery tracker for the Gospers Mountain megafire: where did 
 
 **Limitations / next steps:** NDVI is a proxy for greenness, not fuel structure or canopy height, so "green is back" is not yet "clearance is breached." A bounding-box study area slightly over-counts; swapping in the official NSW RFS fire-extent polygon would tighten the figures. The natural next build pairs this with LiDAR-derived canopy height to convert recovery into actual powerline-clearance breaches, and adds a recovery-rate threshold per management zone to trigger inspections automatically.
 
+### Project 7 (Part 2) — Post-Fire Recovery Forecasting
+
+An extension of the post-fire monitoring work that adds a predictive layer: instead of only tracking how vegetation has recovered, it forecasts when each burn zone will regrow enough to matter again.
+
+Decision this supports: Scheduling post-fire vegetation management around infrastructure. For a utility or council in fire country, regrowth is future fuel, so the operational question is not "has it recovered?" but "when does each area cross back into a risk state, and which areas first?"
+
+Why I built this: Part 1 measured the recovery trajectory after the Gospers Mountain megafire. Working in utility infrastructure, I know that a "recovered" hillside is also a re-loading fuel source, so the more useful output is a forecast a maintenance planner can act on: a date, per zone, with an honest range around it.
+
+Method:
+
+Took the quarterly NDVI recovery trajectory per burn-severity zone from Part 1
+Fitted a logistic recovery curve to each zone (logistic because post-fire regrowth follows an established bare → rapid-growth → saturation shape)
+Propagated the fitted parameter uncertainty to produce a forecast band, not just a single line
+Computed when each zone crosses a vegetation "return-of-risk" NDVI threshold, with a plausible date range
+
+Key findings:
+
+The two zones cross the risk threshold roughly seven months apart from the same fire
+Counter-intuitively, the moderate-severity zone becomes a vegetation-management priority first (~8 months post-fire) because it recovered faster from a higher floor; the high-severity zone follows (~15 months)
+The ordering is the operationally useful output: it tells a planner where to go first, and roughly when
+
+Recommendation: Sequence post-fire vegetation inspections by forecast crossing date rather than by burn severity alone, since severity and recovery-speed do not rank the same way. Treat the forecast band, not the single date, as the planning window.
+
+Data: NDVI recovery trajectory from Part 1 (Sentinel-2, Google Earth Engine); logistic model built in Python (SciPy)
+
+View Forecast + Code
+
+Limitations / next steps: The risk threshold is illustrative and would be calibrated to vegetation type and the asset owner's tolerance in a real deployment. The logistic model assumes no major disturbance (re-burn, drought, clearing) during the forecast window. Recovery is summarised per severity zone; a production version would forecast per management unit.
+
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
 - Email: josephpradil@gmail.com
