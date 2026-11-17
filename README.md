@@ -1,36 +1,61 @@
-# GIS Portfolio — Joseph Pradil
+# Data and GIS Portfolio | Joseph Pradil
 
-Australian and New Zealand focused spatial analysis projects built with Python and Tableau.
+Data pipeline, data quality and spatial analysis projects built with SQL, Python, Databricks and Tableau.
 
 ## About Me
-Spatial analyst with utility-infrastructure experience and advanced Python-based geospatial analytics. I work in utility network and asset GIS, and build decision-support analyses for hazard, exposure, and infrastructure-resilience problems. Currently based in the US, open to opportunities in Australia 🇦🇺 and New Zealand 🇳🇿.
+Data and GIS analyst with utility-infrastructure experience. I work in utility network and asset GIS, where I check records for errors, keep asset data accurate and report status to managers and leadership. I build decision-support analyses for hazard, exposure, and infrastructure-resilience problems. Based in Los Angeles.
 
 ## Tech Stack
 - **Python:** geopandas, rasterio, shapely, folium, osmnx, networkx, numpy, pandas
 - **GIS:** ArcGIS Pro, ArcGIS Online, Experience Builder, StoryMaps
+- **Data engineering:** Databricks, PySpark, Delta tables, SQL (joins, window functions, CTEs)
 - **Database:** PostGIS, SQL
 - **Visualization:** Tableau, folium, matplotlib, ArcGIS Dashboards
 
 ## Projects
 
-### Week 1 — Australian GIS Fundamentals
+### Data Quality Pipeline on Databricks
+
+A data quality and transformation pipeline on 7.5 million orders: check the data first, then join, rank, clean and validate it.
+
+**Decision this supports:** Whether a dataset can be trusted before anyone reports on it. Duplicate keys, missing values and broken links between tables are caught before they reach a dashboard or a model.
+
+**Method:**
+1. Checked key uniqueness, null prices and orphan orders (orders with no matching customer) using a LEFT JOIN
+2. Joined three tables (orders, customer, nation) and aggregated revenue by nation and market segment
+3. Ranked the top 3 customers per nation with a window function (RANK() OVER PARTITION BY nation)
+4. Cleaned the data in PySpark (deduplicate on order key, filter nulls, derive order year) and saved it as a managed table
+5. Validated the saved table in SQL: yearly order counts from 1992 to 1998 sum back to the source total
+
+**Key findings:**
+- 7,500,000 orders, 0 duplicate keys, 0 null prices, 0 orphan orders
+- 7,500,000 rows in and 7,500,000 rows out of the cleaning step, confirmed by the validation query
+- The ranking query returned 75 rows: the top 3 customers in each of 25 nations
+
+**Data:** Databricks TPC-H sample dataset (samples.tpch)
+
+- [View Project & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/databricks-data-pipeline)
+
+**Limitations / next steps:** The sample data is already clean, so the checks confirm quality rather than repair it. A production version would run on raw source data, send failed records to a quarantine table, and schedule the checks as a recurring Databricks job.
+
+### Week 1: Australian GIS Fundamentals
 Core spatial operations applied to Australian cities and regions:
 - Spatial data creation and visualization of Australian survey sites
 - 500km buffer analysis around major Australian cities
 - Population dissolve analysis by Australian state
 
-### Week 2 — Interactive Web Mapping
+### Week 2: Interactive Web Mapping
 - Built interactive folium map of Australian cities with population data
 - Color coded markers by population size with custom legend
 - Live Map: https://joseph-pradil.github.io/gis-portfolio/australia_map.html
 
-### Project 1 — NSW Bushfire Consequence Model
+### Project 1: NSW Bushfire Consequence Model
 
 A bushfire risk model for New South Wales that goes beyond "where do fires happen" to ask the question that actually matters: **where do fires threaten people?**
 
 **Decision this supports:** Prioritising fire-mitigation resources and emergency planning, directing effort to where fire danger and population overlap rather than just where fires are frequent.
 
-**Why I built this:** I work in utility infrastructure in Los Angeles, a region that lives with wildfire every year. That experience taught me that a fire's true cost isn't measured by how often an area burns; it's measured by what's at stake when it does. I built this model to reflect that, using Australian data since I'm targeting GIS roles in Australia and NSW faces near-identical fire challenges to California.
+**Why I built this:** I work in utility infrastructure in Los Angeles, a region that lives with wildfire every year. That experience taught me that a fire's true cost isn't measured by how often an area burns; it's measured by what's at stake when it does. I built this model to reflect that, using Australian data because NSW faces near-identical fire challenges to California.
 
 **Method:**
 1. Loaded 126 years of NSW fire history (37,588 recorded fires, 1900-2026)
@@ -52,7 +77,7 @@ A bushfire risk model for New South Wales that goes beyond "where do fires happe
 
 **Limitations / next steps:** The frequency component is backward-looking. A production model would add vegetation/fuel type, slope, fire weather, and proximity-to-asset data. Population is residential only, so it doesn't capture critical infrastructure or daytime/transient populations.
 
-### Project 2 — Melbourne Urban Heat Island Analysis
+### Project 2: Melbourne Urban Heat Island Analysis
 
 A satellite-based heat map of inner Melbourne that asks not just **where is it hottest**, but **why**, by testing how surface temperature tracks vegetation cover, council by council.
 
@@ -81,7 +106,7 @@ A satellite-based heat map of inner Melbourne that asks not just **where is it h
 
 **Limitations / next steps:** A single-date snapshot, not a multi-year climatology. Surface temperature is not air temperature; it runs hotter. A production version would average several summer scenes and overlay socioeconomic data to map heat *vulnerability*, not just heat.
 
-### Project 3 — Greater Brisbane Flood Exposure Dashboard
+### Project 3: Greater Brisbane Flood Exposure Dashboard
 
 An interactive dashboard quantifying how many people and homes sit in Brisbane's flood-risk zones, and which suburbs are most exposed.
 
@@ -109,7 +134,7 @@ An interactive dashboard quantifying how many people and homes sit in Brisbane's
 
 **Limitations / next steps:** Exposure is estimated by areal interpolation, which assumes population is spread evenly within each suburb, so figures are estimates rather than building-level counts. A production model would use dasymetric mapping, masking unpopulated land with land-use zones or building footprints (e.g. Microsoft's open building footprints) before distributing census counts, to avoid overestimating exposure where a flood zone hits the empty part of a large suburb. The flood layer also gives likelihood, not depth, so it identifies who is exposed, not how severe the impact would be.
 
-### Project 4 — Victorian Flood Road-Access Analysis
+### Project 4: Victorian Flood Road-Access Analysis
 
 A road-network connectivity analysis of the Rochester–Echuca region: when a major flood hits, which towns lose road access and how does the network break apart?
 
@@ -136,7 +161,7 @@ A road-network connectivity analysis of the Rochester–Echuca region: when a ma
 
 **Limitations / next steps:** "Cut off" is defined at the level of the modelled drivable network intersecting the flat 2D flood extent, so it doesn't account for flood depth, timing, or high-clearance vehicles. A more robust pipeline would intersect the road network with a flood-depth raster and remove roads only where water depth exceeds a critical threshold (e.g. >0.3 m, where standard vehicles lose traction), and rank individual roads and bridges by criticality to pinpoint the highest-priority resilience investments.
 
-### Project 5 — Wellington Road-Network Criticality (Seismic Access)
+### Project 5: Wellington Road-Network Criticality (Seismic Access)
 
 A network-criticality analysis of earthquake-prone Wellington: which individual roads, if damaged, would most degrade the population's access to hospital, and so should be hardened first?
 
@@ -163,7 +188,7 @@ A network-criticality analysis of earthquake-prone Wellington: which individual 
 
 **Limitations / next steps:** Criticality is measured to a single destination (Wellington Hospital); the person-km figures are indicative rather than precise (aggregating across a road's segments slightly over-counts). A fuller analysis would test multiple destinations and model simultaneous failure of all roads crossing the Wellington Fault rupture zone, weighted by each link's actual seismic-failure likelihood.
 
-### Project 6 — Auckland Compound Hazard (Flood + Landslide Overlap)
+### Project 6: Auckland Compound Hazard (Flood + Landslide Overlap)
 
 A multi-hazard overlay for Auckland: where do flood and landslide risk overlap, and how many people live on that double-jeopardy land that single-hazard maps miss?
 
@@ -190,7 +215,7 @@ A multi-hazard overlay for Auckland: where do flood and landslide risk overlap, 
 
 **Limitations / next steps:** Population is estimated by areal interpolation (people assumed evenly spread within each SA2), so the compound figure is an estimate rather than a building-level count. The analysis uses large-scale landslide susceptibility; the shallow-landslide layer (which dominated the 2023 slips) is a separate official dataset a refined version would also overlay. Susceptibility indicates where landslides are more likely, not that they will occur. A natural extension would add coastal inundation for a three-hazard analysis and overlay socioeconomic data to map compound *vulnerability*.
 
-### Project 7 — Post-Fire Vegetation Recovery Monitoring (NSW)
+### Project 7: Post-Fire Vegetation Recovery Monitoring (NSW)
 
 A satellite-based recovery tracker for the Gospers Mountain megafire: where did the fire burn worst, and how fast do vegetation, fuel load and ignition risk grow back?
 
@@ -217,34 +242,32 @@ A satellite-based recovery tracker for the Gospers Mountain megafire: where did 
 
 **Limitations / next steps:** NDVI is a proxy for greenness, not fuel structure or canopy height, so "green is back" is not yet "clearance is breached." A bounding-box study area slightly over-counts; swapping in the official NSW RFS fire-extent polygon would tighten the figures. The natural next build pairs this with LiDAR-derived canopy height to convert recovery into actual powerline-clearance breaches, and adds a recovery-rate threshold per management zone to trigger inspections automatically.
 
-### Project 7 (Part 2) — Post-Fire Recovery Forecasting
+### Project 7 (Part 2): Post-Fire Recovery Forecasting
 
 An extension of the post-fire monitoring work that adds a predictive layer: instead of only tracking how vegetation has recovered, it forecasts when each burn zone will regrow enough to matter again.
 
-Decision this supports: Scheduling post-fire vegetation management around infrastructure. For a utility or council in fire country, regrowth is future fuel, so the operational question is not "has it recovered?" but "when does each area cross back into a risk state, and which areas first?"
+**Decision this supports:** Scheduling post-fire vegetation management around infrastructure. For a utility or council in fire country, regrowth is future fuel, so the operational question is not "has it recovered?" but "when does each area cross back into a risk state, and which areas first?"
 
-Why I built this: Part 1 measured the recovery trajectory after the Gospers Mountain megafire. Working in utility infrastructure, I know that a "recovered" hillside is also a re-loading fuel source, so the more useful output is a forecast a maintenance planner can act on: a date, per zone, with an honest range around it.
+**Why I built this:** Part 1 measured the recovery trajectory after the Gospers Mountain megafire. Working in utility infrastructure, I know that a "recovered" hillside is also a re-loading fuel source, so the more useful output is a forecast a maintenance planner can act on: a date, per zone, with an honest range around it.
 
-Method:
+**Method:**
+1. Took the quarterly NDVI recovery trajectory per burn-severity zone from Part 1
+2. Fitted a logistic recovery curve to each zone (logistic because post-fire regrowth follows an established bare → rapid-growth → saturation shape)
+3. Propagated the fitted parameter uncertainty to produce a forecast band, not just a single line
+4. Computed when each zone crosses a vegetation "return-of-risk" NDVI threshold, with a plausible date range
 
-Took the quarterly NDVI recovery trajectory per burn-severity zone from Part 1
-Fitted a logistic recovery curve to each zone (logistic because post-fire regrowth follows an established bare → rapid-growth → saturation shape)
-Propagated the fitted parameter uncertainty to produce a forecast band, not just a single line
-Computed when each zone crosses a vegetation "return-of-risk" NDVI threshold, with a plausible date range
+**Key findings:**
+- The two zones cross the risk threshold roughly seven months apart from the same fire
+- Counter-intuitively, the moderate-severity zone becomes a vegetation-management priority first (~8 months post-fire) because it recovered faster from a higher floor; the high-severity zone follows (~15 months)
+- The ordering is the operationally useful output: it tells a planner where to go first, and roughly when
 
-Key findings:
+**Recommendation:** Sequence post-fire vegetation inspections by forecast crossing date rather than by burn severity alone, since severity and recovery-speed do not rank the same way. Treat the forecast band, not the single date, as the planning window.
 
-The two zones cross the risk threshold roughly seven months apart from the same fire
-Counter-intuitively, the moderate-severity zone becomes a vegetation-management priority first (~8 months post-fire) because it recovered faster from a higher floor; the high-severity zone follows (~15 months)
-The ordering is the operationally useful output: it tells a planner where to go first, and roughly when
+**Data:** NDVI recovery trajectory from Part 1 (Sentinel-2, Google Earth Engine); logistic model built in Python (SciPy)
 
-Recommendation: Sequence post-fire vegetation inspections by forecast crossing date rather than by burn severity alone, since severity and recovery-speed do not rank the same way. Treat the forecast band, not the single date, as the planning window.
+- [View Forecast & Code](https://github.com/joseph-pradil/gis-portfolio/tree/main/07-nsw-postfire-recovery)
 
-Data: NDVI recovery trajectory from Part 1 (Sentinel-2, Google Earth Engine); logistic model built in Python (SciPy)
-
-View Forecast + Code
-
-Limitations / next steps: The risk threshold is illustrative and would be calibrated to vegetation type and the asset owner's tolerance in a real deployment. The logistic model assumes no major disturbance (re-burn, drought, clearing) during the forecast window. Recovery is summarised per severity zone; a production version would forecast per management unit.
+**Limitations / next steps:** The risk threshold is illustrative and would be calibrated to vegetation type and the asset owner's tolerance in a real deployment. The logistic model assumes no major disturbance (re-burn, drought, clearing) during the forecast window. Recovery is summarised per severity zone; a production version would forecast per management unit.
 
 ## Connect
 - LinkedIn: https://www.linkedin.com/in/joseph-pradil-bolleddu-45277921a/
